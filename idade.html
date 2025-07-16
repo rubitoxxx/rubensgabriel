@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificador de Idade</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .janela {
+      width: 300px;
+      height: 400px;
+      background-image: url('18id.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .janela h2 {
+      color: #fff;
+      text-shadow: 1px 1px 2px #000;
+      margin-bottom: 20px;
+    }
+
+    .janela input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    .janela button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .janela button:hover {
+      background-color: #388e3c;
+    }
+
+    .resultado {
+      margin-top: 15px;
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .sucesso {
+      color: #00ff88;
+    }
+
+    .erro {
+      color: #ff4444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="janela">
+    <h2>Verificador de Idade</h2>
+    <input type="number" id="ano" placeholder="Ano de nascimento">
+    <button onclick="verificarIdade()">Verificar</button>
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function verificarIdade() {
+      const ano = parseInt(document.getElementById('ano').value);
+      const resultado = document.getElementById('resultado');
+      const anoAtual = new Date().getFullYear();
+
+      resultado.className = 'resultado';
+
+      if (isNaN(ano)) {
+        resultado.textContent = "Digite um número válido.";
+        resultado.classList.add('erro');
+        return;
+      }
+
+      if (ano < 1900 || ano > anoAtual) {
+        resultado.textContent = "Ano inválido. Verifique o valor.";
+        resultado.classList.add('erro');
+        return;
+      }
+
+      const idade = anoAtual - ano;
+
+      if (idade >= 18) {
+        resultado.innerHTML = `Você tem ${idade} anos.<br><strong class="sucesso">✅ Maior de idade</strong>`;
+      } else {
+        const faltam = 18 - idade;
+        resultado.innerHTML = `Você tem ${idade} anos.<br><strong class="erro">❌ Menor de idade</strong><br>Faltam ${faltam} ano(s).`;
+      }
+    }
+  </script>
+
+</body>
+</html>

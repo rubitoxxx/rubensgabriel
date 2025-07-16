@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Rubens Gabriel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .skill-bar {
+            transition: width 1.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <nav class="bg-white/80 backdrop-blur-md shadow-md fixed w-full z-20 top-0">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <a href="#home" class="text-2xl font-bold text-gray-800">RG</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-purple-600 transition-colors">Sobre</a>
+                    <a href="#projects" class="text-gray-600 hover:text-purple-600 transition-colors">Projetos</a>
+                    <a href="#skills" class="text-gray-600 hover:text-purple-600 transition-colors">Habilidades</a>
+                    <a href="#contact" class="text-gray-600 hover:text-purple-600 transition-colors">Contato</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white pt-16">
+        <div class="text-center px-6">
+            <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white/20 flex items-center justify-center text-6xl">
+                👨‍💻
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in">Rubens Gabriel</h1>
+            <p class="text-xl md:text-2xl opacity-90 fade-in">Analista e Desenvolvedor de Sistemas</p>
+            <p class="text-xl md:text-2xl mt-2 mb-10 opacity-90 fade-in">em formação</p>
+            <div class="space-x-4 fade-in">
+                <button onclick="scrollToSection('projects')" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    Ver Meus Trabalhos
+                </button>
+                <button onclick="scrollToSection('contact')" class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                    Entrar em Contato
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Sobre Mim</h2>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Sou um analista e desenvolvedor de sistemas apaixonado por tecnologia e por transformar ideias em soluções funcionais. Meu foco é em desenvolvimento de software, com ênfase em projetos acadêmicos que exploram diversas tecnologias.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-8">
+                        Através dos meus projetos, busco aprofundar meus conhecimentos e aplicar conceitos teóricos na prática, construindo aplicações robustas e eficientes. Estou sempre em busca de novos desafios e oportunidades para aprender e crescer na área de desenvolvimento.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">Python</span>
+                        <span class="bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-medium">Java</span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">Web Dev</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium">PostgreSQL</span>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl p-8 text-white">
+                        <div class="text-6xl mb-4">🚀</div>
+                        <h3 class="text-2xl font-bold mb-4">Vamos Construir Algo Incrível</h3>
+                        <p class="opacity-90">Acredito que um bom software nasce da compreensão dos desafios técnicos e das necessidades humanas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Projetos Acadêmicos</h2>
+                <p class="text-gray-600 text-lg">Aqui estão alguns dos projetos que desenvolvi durante minha jornada acadêmica.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover fade-in">
+                    <img class="w-full h-48 object-cover" src="python.png" alt="Projeto em Python">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Projeto em Python</h3>
+                        <p class="text-gray-600 mb-4">Descrição breve do seu projeto em Python. Ex: uma API de análise de dados, um script de automação, etc.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Python</span>
+                        </div>
+                    <a href="python.html">
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Ver Projeto →
+                        </button>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover fade-in">
+                    <img class="w-full h-48 object-cover" src="java.png" alt="Projeto em Java">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Projeto em Java</h3>
+                        <p class="text-gray-600 mb-4">Descrição breve do seu projeto em Java. Ex: um sistema de gerenciamento, uma aplicação desktop, etc.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Java</span>
+                        </div>
+                        <a href="java.html">
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Ver Projeto →
+                        </button>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover fade-in">
+                    <img class="w-full h-48 object-cover" src="rubens1.png" alt="Projeto Web">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Projeto Web</h3>
+                        <p class="text-gray-600 mb-4">Descrição breve do seu projeto web. Ex: um site institucional, um blog, uma pequena loja virtual, etc.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">HTML</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">CSS</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">JavaScript</span>
+                        </div>
+                        <a href="webdesign.html">
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Ver Projeto →
+                        </button>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover fade-in">
+                    <img class="w-full h-48 object-cover" src="rubens1.png" alt="Projeto de Banco de Dados">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Banco de Dados com PostgreSQL</h3>
+                        <p class="text-gray-600 mb-4">Descrição breve do projeto de banco de dados. Ex: modelagem e implementação para um sistema X.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">PostgreSQL</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">SQL</span>
+                        </div>
+                        <a href="bancodedados.html">
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Ver Projeto →
+                        </button>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Habilidades & Ferramentas</h2>
+                <p class="text-gray-600 text-lg">Tecnologias e ferramentas com as quais trabalho</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Habilidades Técnicas</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">Python</span>
+                                <span class="text-gray-500">85%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-500 h-2 rounded-full skill-bar" style="width: 0%;" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">Java</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-red-500 h-2 rounded-full skill-bar" style="width: 0%;" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">HTML, CSS & JavaScript</span>
+                                <span class="text-gray-500">90%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full skill-bar" style="width: 0%;" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">PostgreSQL</span>
+                                <span class="text-gray-500">75%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full skill-bar" style="width: 0%;" data-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Ferramentas & Plataformas</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl mb-2">🐍</div>
+                            <span class="text-gray-700 font-medium">Python</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl mb-2">☕</div>
+                            <span class="text-gray-700 font-medium">Java</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl mb-2">🐘</div>
+                            <span class="text-gray-700 font-medium">PostgreSQL</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl mb-2">🐙</div>
+                            <span class="text-gray-700 font-medium">Git & GitHub</span>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl mb-2">💻</div>
+                            <span class="text-gray-700 font-medium">VS Code</span>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl mb-2">🐧</div>
+                            <span class="text-gray-700 font-medium">Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold mb-6">Vamos Trabalhar Juntos</h2>
+                <p class="text-xl mb-12 opacity-90">Tem um projeto em mente? Eu adoraria ouvir sobre ele!</p>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-4xl mb-4">📧</div>
+                        <h3 class="text-xl font-semibold mb-2">Email</h3>
+                        <a href="mailto:rubensgabrielesilvasantos@gmail.com" class="hover:underline">
+                           Rubens Gabriel
+                        </a>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-4xl mb-4">💼</div>
+                        <h3 class="text-xl font-semibold mb-2">LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/rubens-gabriel-221679263" class="hover:underline">
+                           rubens-gabriel-221679263
+                        </a>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-4xl mb-4">🐙</div>
+                        <h3 class="text-xl font-semibold mb-2">GitHub</h3>
+                        <a href="https://github.com/rubitoxxx" class="hover:underline">
+                           rubitoxxx
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-6">Envie-me uma mensagem</h3>
+                    <form>
+                        <div class="space-y-4">
+                            <input type="text" placeholder="Seu Nome" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-white/50">
+                            <input type="email" placeholder="Seu Email" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-white/50">
+                            <textarea placeholder="Sua Mensagem" rows="4" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-white/50 resize-none"></textarea>
+                            <button type="submit" class="w-full bg-white text-purple-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                Enviar Mensagem
+                            </button>
+                        </div>
+                        <p class="text-sm opacity-70 mt-4">as mensagens ainda estão em fase de implementação.suas mensagens <br>
+                            serão redirecionadas ao meu banco de dados,então por hora, me envie por email.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="opacity-70">© 2025 Rubens Gabriel. Construído com paixão e muito café ☕</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // --- SCRIPT DE ANIMAÇÃO CORRIGIDO ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Anima as barras de habilidade dentro do elemento que se tornou visível
+                    const skillBars = entry.target.querySelectorAll('.skill-bar');
+                    skillBars.forEach(bar => {
+                        bar.style.width = bar.dataset.width;
+                    });
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        mobileMenuButton.addEventListener('click', function() {
+            // Lógica para um menu real seria implementada aqui
+            alert('O menu móvel apareceria aqui em uma implementação completa.');
+        });
+
+        // Form submission alert
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Sua mensagem não foi enviada.Entre em contato comigo por email');
+        });
+        
+        // Initial animations on load for the hero section
+        document.addEventListener('DOMContentLoaded', () => {
+             const heroElements = document.querySelectorAll('#home .fade-in');
+             heroElements.forEach((el, index) => {
+                 setTimeout(() => {
+                     el.classList.add('visible');
+                 }, index * 200);
+             });
+        });
+
+    </script>
+</body>
+</html>

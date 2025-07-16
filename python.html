@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Projetos Python🐍</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column; /* Alterado para coluna para posicionar o botão abaixo do container */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 2rem; /* Adicionado um espaçamento abaixo do container */
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h2 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #718096;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card .button {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .project-card .button:hover {
+            background-color: #5a67d8;
+        }
+
+        /* Estilo para o botão "voltar" */
+        .btn-branco {
+            display: inline-block;
+            background-color: white; /* Fundo branco */
+            color: #667eea; /* Texto na cor do tema */
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+            border: 2px solid #667eea; /* Borda para combinar com o tema */
+            margin-top: 1rem; /* Espaçamento superior */
+        }
+
+        .btn-branco:hover {
+            background-color: #667eea; /* Inverte as cores no hover */
+            color: white;
+            transform: translateY(-3px); /* Efeito de leve levantamento */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            .project-card {
+                padding: 1.5rem;
+            }
+            .btn-branco {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Meus Projetos Python 🐍 </h1>
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="icon">🧮</div>
+                <h2>Calculadora</h2>
+                <p>Uma calculadora funcional com as quatro operações básicas, construída com lógica de JavaScript.</p>
+                <a href="calc.html" target="_blank" class="button">Abrir Projeto</a>
+            </div>
+
+            <div class="project-card">
+                <div class="icon">🆔</div>
+                <h2>Verificador de Idade</h2>
+                <p>App que calcula a idade com base no ano de nascimento e informa se o usuário é maior de idade.</p>
+                <a href="identificador.html" target="_blank" class="button">Abrir Projeto</a>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <a class="btn-branco" href="meupotifolio1.html">Voltar</a>
+    </div>
+
+</body>
+</html>

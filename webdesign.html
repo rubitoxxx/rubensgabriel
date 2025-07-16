@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto Rubix</title>
+  <style>
+     :root {
+  --cor-principal-azul: #007bff; /* Azul vibrante */
+  --cor-principal-azul-escuro: #0056b3; /* Azul mais escuro para hover */
+  --cor-fundo-claro: #f8f9fa; /* Fundo muito claro */
+  --cor-fundo-secao-texto: #ffffff; /* Branco puro para a seção de texto */
+  --cor-fundo-iframe: #e9ecef; /* Cinza claro para o container do iframe */
+  --cor-texto-escuro: #343a40; /* Texto quase preto */
+  --sombra-leve: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais sutil */
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Fonte mais moderna */
+  display: flex;
+  min-height: 100vh; /* Garante altura total */
+  background-color: var(--cor-fundo-claro);
+  color: var(--cor-texto-escuro);
+  line-height: 1.6;
+}
+
+/* Estilos para a seção de texto */
+.texto {
+  flex: 1;
+  padding: 50px; /* Mais preenchimento */
+  background-color: var(--cor-fundo-secao-texto);
+  display: flex; /* Para centralizar conteúdo dentro dele se necessário */
+  flex-direction: column;
+  justify-content: center; /* Centraliza conteúdo verticalmente */
+  align-items: flex-start; /* Alinha à esquerda */
+  box-shadow: var(--sombra-leve); /* Sombra no painel de texto */
+  position: relative; /* Para potencial uso de z-index ou pseudo-elementos */
+  z-index: 2; /* Garante que fique acima de elementos próximos se houver sobreposição */
+}
+
+.texto h1 {
+  font-size: 2.8em; /* Título maior */
+  color: var(--cor-principal-azul);
+  margin-bottom: 0.5em;
+  font-weight: 700; /* Mais negrito */
+}
+
+.texto p {
+  font-size: 1.15em;
+  margin-bottom: 1em;
+  max-width: 600px; /* Limita a largura do texto para melhor leitura */
+}
+
+/* Estilos para os botões */
+.botoes {
+  margin-top: 30px; /* Mais espaço acima dos botões */
+  display: flex; /* Para alinhar os botões lado a lado */
+  gap: 15px; /* Espaço entre os botões */
+}
+
+.botoes a {
+  display: inline-block;
+  padding: 12px 28px; /* Mais preenchimento para botões maiores */
+  border-radius: 30px; /* Bordas mais arredondadas (pill shape) */
+  text-decoration: none;
+  font-weight: 600; /* Um pouco mais negrito */
+  transition: all 0.3s ease; /* Transição suave para hover */
+  font-size: 1em;
+}
+
+.btn-azul {
+  background-color: var(--cor-principal-azul);
+  color: white;
+  border: 2px solid var(--cor-principal-azul);
+}
+
+.btn-azul:hover {
+  background-color: var(--cor-principal-azul-escuro);
+  border-color: var(--cor-principal-azul-escuro);
+  transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+.btn-branco {
+  background-color: white;
+  color: var(--cor-principal-azul);
+  border: 2px solid var(--cor-principal-azul);
+}
+
+.btn-branco:hover {
+  background-color: var(--cor-principal-azul);
+  color: white;
+  transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+/* Estilos para o contêiner do iframe */
+.iframe-container {
+  flex: 1.5; /* Ocupa mais espaço que a seção de texto */
+  background-color: var(--cor-fundo-iframe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px; /* Preenchimento ao redor do iframe */
+  z-index: 1; /* Garante que fique abaixo do painel de texto se houver sobreposição */
+}
+
+iframe {
+  width: 100%; /* Ocupa 100% do container com padding */
+  height: 100%; /* Ocupa 100% do container com padding */
+  max-width: 1200px; /* Limite máximo para o iframe */
+  max-height: 800px; /* Limite máximo para o iframe */
+  border: none;
+  border-radius: 12px; /* Bordas mais arredondadas */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada e elegante */
+  background-color: white; /* Cor de fundo para o iframe caso o conteúdo não preencha */
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* Empilha as seções em telas menores */
+  }
+
+  .texto {
+    padding: 30px 20px;
+    box-shadow: none; /* Remove sombra na seção de texto em mobile */
+  }
+
+  .texto h1 {
+    font-size: 2em;
+  }
+
+  .texto p {
+    font-size: 1em;
+  }
+
+  .botoes {
+    flex-direction: column; /* Empilha os botões em telas menores */
+    gap: 10px;
+  }
+
+  .botoes a {
+    width: 100%; /* Botões ocupam largura total */
+    text-align: center;
+  }
+
+  .iframe-container {
+    padding: 20px;
+    min-height: 400px; /* Altura mínima para o iframe em mobile */
+    flex: 1; /* Retorna ao flex 1 */
+  }
+}
+
+@media (max-width: 480px) {
+  .texto h1 {
+    font-size: 1.8em;
+  }
+  .texto p {
+    font-size: 0.95em;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="texto">
+    <h1>Projeto Rubix: Um Mural de Posts Interativo</h1>
+    <p>Conheça o Rubix, um projeto que desenvolvi para praticar minhas habilidades em HTML, CSS e JavaScript, utilizando o <strong>Supabase</strong> como backend e o <strong>GitHub Pages</strong> para a hospedagem.</p>
+    <p><strong>Autor:</strong> Rubens Gabriel • <em>06 de Julho de 2025</em></p>
+
+    <div class="botoes">
+      <a class="btn-azul" href="https://rubitoxxx.github.io/rubix/" target="preview">Ver Projeto ao Vivo</a>
+      <a class="btn-branco" href="meupotifolio1.html">voltar</a>
+    </div>
+  </div>
+
+  <div class="iframe-container">
+    <iframe name="preview" src="https://rubitoxxx.github.io/rubix/"></iframe>
+  </div>
+
+</body>
+</html>

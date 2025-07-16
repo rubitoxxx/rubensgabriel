@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - Blog de Python</title>
+    <style>
+        /* CSS da Calculadora */
+        .calculadora {
+            width: 300px;
+            background-color: #f2f2f2;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .calculadora #display {
+            width: 100%;
+            height: 60px;
+            font-size: 2rem;
+            text-align: right;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            box-sizing: border-box;
+            background-color: #2d3748; /* Cor escura para o display */
+            color: #48bb78; /* Cor verde para os números */
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        .calculadora .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .calculadora .botoes button {
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            background-color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .calculadora .botoes button:hover {
+            background-color: #cbd5e0;
+            transform: translateY(-2px);
+        }
+
+        .calculadora .botoes button.operador {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .calculadora .botoes button.operador:hover {
+            background-color: #5a67d8;
+        }
+
+        .calculadora .botoes button.igual {
+            background-color: #48bb78;
+            color: white;
+            grid-row: span 2;
+        }
+        
+        .calculadora .botoes button.igual:hover {
+            background-color: #38a169;
+        }
+
+        .calculadora .botoes button.clear {
+            background-color: #f56565;
+            color: white;
+        }
+
+        .calculadora .botoes button.clear:hover {
+            background-color: #e53e3e;
+        }
+    </style>
+</head>
+<body style="font-family: 'Georgia', serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
+
+<section style="min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; display: flex; align-items: center; justify-content: center;">
+    <div style="max-width: 1200px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 600px;">
+        
+        <div style="padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center;">
+            <span style="display: inline-block; background: #FFD43B; color: #333; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px;">
+                🐍 Python
+            </span>
+            
+            <h1 style="font-size: 3rem; font-weight: 700; color: #2d3748; margin-top:0; margin-bottom: 1.5rem; line-height: 1.2;">
+                Meu Primeiro Projeto: Uma Calculadora
+            </h1>
+            
+            <p style="font-size: 1.25rem; color: #718096; margin-bottom: 2rem; line-height: 1.6;">
+                Este projeto foi criado para praticar conceitos de lógica e manipulação do DOM com JavaScript, resultando em uma calculadora funcional e interativa.
+            </p>
+
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; font-size: 0.875rem; color: #a0aec0;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size:1rem;">
+                        RG
+                    </div>
+                    <span style="color: #4a5568; font-weight: 600;">Rubens Gabriel</span>
+                </div>
+                <span>•</span>
+                <span>06 de Julho de 2024</span>
+                <span>•</span>
+                <span>3 min de leitura</span>
+            </div>
+        </div>
+        
+        <div style="position: relative; overflow: hidden; background: #f7fafc; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+            
+            <div class="calculadora">
+                <input type="text" id="display" disabled>
+                <div class="botoes">
+                    <button onclick="limpar()" class="clear">C</button>
+                    <button onclick="adicionar('/')" class="operador">/</button>
+                    <button onclick="adicionar('*')" class="operador">x</button>
+                    <button onclick="adicionar('-')" class="operador">-</button>
+            
+                    <button onclick="adicionar('7')">7</button>
+                    <button onclick="adicionar('8')">8</button>
+                    <button onclick="adicionar('9')">9</button>
+                    <button onclick="adicionar('+')" class="operador">+</button>
+            
+                    <button onclick="adicionar('4')">4</button>
+                    <button onclick="adicionar('5')">5</button>
+                    <button onclick="adicionar('6')">6</button>
+                    <button onclick="calcular()" class="igual">=</button>
+            
+                    <button onclick="adicionar('1')">1</button>
+                    <button onclick="adicionar('2')">2</button>
+                    <button onclick="adicionar('3')">3</button>
+            
+                    <button onclick="adicionar('0')" style="grid-column: span 2;">0</button>
+                    <button onclick="adicionar('.')">.</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<script>
+    const display = document.getElementById('display');
+
+    function adicionar(valor) {
+        // Evita múltiplos operadores ou pontos em sequência
+        const ultimoChar = display.value.slice(-1);
+        const operadores = ['/', '*', '-', '+'];
+        if (operadores.includes(valor) && operadores.includes(ultimoChar)) {
+            return;
+        }
+        if (valor === '.' && display.value.includes('.')) {
+             // Impede adicionar um segundo ponto se o número atual já tiver um
+            const ultimoOperador = Math.max(...operadores.map(op => display.value.lastIndexOf(op)));
+            if (display.value.substring(ultimoOperador + 1).includes('.')) return;
+        }
+        display.value += valor;
+    }
+
+    function limpar() {
+        display.value = '';
+    }
+
+    function calcular() {
+        try {
+            // A função eval() é usada aqui por simplicidade, mas pode ser insegura em produção.
+            let resultado = eval(display.value.replace(/x/g, '*'));
+            // Limita o número de casas decimais para evitar resultados muito longos
+            if (resultado.toString().includes('.')) {
+                resultado = parseFloat(resultado.toFixed(4));
+            }
+            display.value = resultado;
+        } catch {
+            display.value = 'Erro';
+        }
+    }
+</script>
+
+</body>
+</html>
