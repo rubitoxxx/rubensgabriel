@@ -5,6 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hero Section - Verificador de Idade</title>
     <style>
+        /* Estilos gerais para garantir a responsividade */
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+        }
+
+        /* Estilos do Hero Section */
+        section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .text-content {
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #F7DF1E;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .text-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .text-content p {
+            font-size: 1.25rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            color: #a0aec0;
+            flex-wrap: wrap; /* Para quebrar a linha em telas muito pequenas */
+        }
+
+        .author-details {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .author-name {
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .form-section {
+            position: relative;
+            overflow: hidden;
+            background: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
         /* CSS do Verificador de Idade */
         .janela {
             width: 320px;
@@ -68,32 +184,104 @@
             color: #e53e3e;
             font-weight: bold;
         }
+
+        /* --- Media Queries para Responsividade --- */
+
+        /* Para telas menores que 768px (tablets e celulares) */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr; /* Uma coluna em telas menores */
+                min-height: auto; /* Altura automática */
+            }
+
+            .text-content {
+                padding: 2rem 1.5rem; /* Reduz o padding */
+                text-align: center; /* Centraliza o texto */
+            }
+
+            .text-content h1 {
+                font-size: 2.2rem; /* Reduz o tamanho do título */
+                margin-bottom: 1rem;
+            }
+
+            .text-content p {
+                font-size: 1rem; /* Reduz o tamanho do parágrafo */
+                margin-bottom: 1.5rem;
+            }
+
+            .tag {
+                margin: 0 auto 1.5rem auto; /* Centraliza a tag */
+            }
+
+            .author-info {
+                justify-content: center; /* Centraliza as informações do autor */
+                flex-direction: column; /* Empilha as informações do autor */
+                gap: 0.5rem; /* Ajusta o espaçamento */
+            }
+
+            .form-section {
+                padding: 1.5rem; /* Reduz o padding da seção do formulário */
+            }
+
+            .janela {
+                width: 90%; /* A janela ocupa 90% da largura disponível */
+                max-width: 320px; /* Mas não excede 320px */
+            }
+        }
+
+        /* Para telas menores que 480px (celulares) */
+        @media (max-width: 480px) {
+            section {
+                padding: 1rem; /* Mais padding para telas muito pequenas */
+            }
+
+            .text-content {
+                padding: 1.5rem 1rem; /* Reduz ainda mais o padding */
+            }
+
+            .text-content h1 {
+                font-size: 1.8rem; /* Título menor para telas muito pequenas */
+            }
+
+            .text-content p {
+                font-size: 0.9rem; /* Parágrafo menor */
+            }
+
+            .author-info {
+                font-size: 0.75rem; /* Fonte menor para as informações do autor */
+            }
+
+            .avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
-<body style="font-family: 'Georgia', serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
+<body>
 
-<section style="min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; display: flex; align-items: center; justify-content: center;">
-    <div style="max-width: 1200px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 600px;">
-        
-        <div style="padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center;">
-            <span style="display: inline-block; background: #F7DF1E; color: #000; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px;">
+<section>
+    <div class="main-container">
+        <div class="text-content">
+            <span class="tag">
                 🐍 Python
             </span>
             
-            <h1 style="font-size: 3rem; font-weight: 700; color: #2d3748; margin-top:0; margin-bottom: 1.5rem; line-height: 1.2;">
+            <h1>
                 Meu Projeto: Verificador de Maioridade
             </h1>
             
-            <p style="font-size: 1.25rem; color: #718096; margin-bottom: 2rem; line-height: 1.6;">
+            <p>
                 Um app simples para praticar lógica com datas e manipulação do DOM, calculando a idade a partir do ano de nascimento do usuário.
             </p>
 
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; font-size: 0.875rem; color: #a0aec0;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size:1rem;">
+            <div class="author-info">
+                <div class="author-details">
+                    <div class="avatar">
                         RG
                     </div>
-                    <span style="color: #4a5568; font-weight: 600;">Rubens Gabriel</span>
+                    <span class="author-name">Rubens Gabriel</span>
                 </div>
                 <span>•</span>
                 <span>26 de Julho de 2024</span>
@@ -102,19 +290,16 @@
             </div>
         </div>
         
-        <div style="position: relative; overflow: hidden; background: #f0f2f5; display: flex; align-items: center; justify-content: center; padding: 2rem;">
-            
+        <div class="form-section">
             <div class="janela">
                 <h2>Verificador de Idade</h2>
                 <input type="number" id="ano" placeholder="Digite seu ano de nascimento">
                 <button onclick="verificarIdade()">Verificar</button>
                 <div id="resultado" class="resultado"></div>
             </div>
-
         </div>
     </div>
 </section>
-
 
 <script>
     function verificarIdade() {
@@ -132,6 +317,7 @@
             return;
         }
 
+        // Correção para o ano limite: considerar o ano atual
         if (anoNascimento < 1900 || anoNascimento > anoAtual) {
             resultadoDiv.textContent = "Ano inválido. Verifique o valor.";
             resultadoDiv.classList.add('erro');
