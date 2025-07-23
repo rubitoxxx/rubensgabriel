@@ -81,32 +81,248 @@
         .calculadora .botoes button.clear:hover {
             background-color: #e53e3e;
         }
+
+        /* Estilos gerais do corpo */
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Seção Hero */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+        
+        .text-content {
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #FFD43B;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-top:0;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .description {
+            font-size: 1.25rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .meta-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            color: #a0aec0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size:1rem;
+        }
+
+        .author-name {
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .calculator-container {
+            position: relative;
+            overflow: hidden;
+            background: #f7fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* --- Media Queries para Responsividade --- */
+
+        /* Para telas menores que 768px (celulares, tablets pequenos) */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr; /* Coloca os elementos um abaixo do outro */
+                min-height: auto; /* Altura automática para se ajustar ao conteúdo */
+            }
+
+            .text-content {
+                padding: 2rem 1.5rem; /* Diminui o padding */
+                text-align: center; /* Centraliza o texto */
+            }
+
+            .badge {
+                margin-left: auto;
+                margin-right: auto; /* Centraliza o badge */
+            }
+
+            .title {
+                font-size: 2.2rem; /* Diminui o tamanho da fonte do título */
+                margin-bottom: 1rem;
+            }
+
+            .description {
+                font-size: 1rem; /* Diminui o tamanho da fonte da descrição */
+                margin-bottom: 1.5rem;
+            }
+
+            .meta-info {
+                flex-direction: column; /* Coloca as informações meta em coluna */
+                align-items: center; /* Centraliza as informações meta */
+                gap: 0.5rem;
+            }
+
+            .calculator-container {
+                padding: 1.5rem; /* Diminui o padding do container da calculadora */
+            }
+
+            .calculadora {
+                width: 100%; /* A calculadora ocupa a largura total disponível */
+                max-width: 280px; /* Limita a largura máxima para não ficar muito grande em telas um pouco maiores */
+            }
+
+            .calculadora #display {
+                font-size: 1.8rem; /* Ajusta o tamanho da fonte do display */
+                height: 50px; /* Ajusta a altura do display */
+            }
+
+            .calculadora .botoes button {
+                padding: 15px; /* Diminui o padding dos botões */
+                font-size: 1rem; /* Diminui o tamanho da fonte dos botões */
+            }
+        }
+
+        /* Para telas menores que 480px (celulares bem pequenos) */
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 1rem; /* Diminui o padding geral da seção */
+            }
+
+            .hero-content {
+                border-radius: 10px; /* Arredondamento menor nas bordas */
+            }
+
+            .text-content {
+                padding: 1.5rem 1rem; /* Ainda mais padding */
+            }
+
+            .title {
+                font-size: 1.8rem; /* Título ainda menor */
+            }
+
+            .description {
+                font-size: 0.9rem; /* Descrição ainda menor */
+            }
+
+            .meta-info {
+                font-size: 0.75rem; /* Meta-informações menores */
+            }
+
+            .author-avatar {
+                width: 35px; /* Avatar menor */
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .calculator-container {
+                padding: 1rem;
+            }
+            .calculadora {
+                padding: 15px;
+            }
+            .calculadora #display {
+                font-size: 1.5rem;
+                height: 45px;
+            }
+            .calculadora .botoes button {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+        }
+
     </style>
 </head>
-<body style="font-family: 'Georgia', serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
+<body class="body">
 
-<section style="min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; display: flex; align-items: center; justify-content: center;">
-    <div style="max-width: 1200px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 600px;">
+<section class="hero-section">
+    <div class="hero-content">
         
-        <div style="padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center;">
-            <span style="display: inline-block; background: #FFD43B; color: #333; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px;">
+        <div class="text-content">
+            <span class="badge">
                 🐍 Python
             </span>
             
-            <h1 style="font-size: 3rem; font-weight: 700; color: #2d3748; margin-top:0; margin-bottom: 1.5rem; line-height: 1.2;">
+            <h1 class="title">
                 Meu Primeiro Projeto: Uma Calculadora
             </h1>
             
-            <p style="font-size: 1.25rem; color: #718096; margin-bottom: 2rem; line-height: 1.6;">
+            <p class="description">
                 Este projeto foi criado para praticar conceitos de lógica e manipulação do DOM com JavaScript, resultando em uma calculadora funcional e interativa.
             </p>
 
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; font-size: 0.875rem; color: #a0aec0;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size:1rem;">
+            <div class="meta-info">
+                <div class="author-info">
+                    <div class="author-avatar">
                         RG
                     </div>
-                    <span style="color: #4a5568; font-weight: 600;">Rubens Gabriel</span>
+                    <span class="author-name">Rubens Gabriel</span>
                 </div>
                 <span>•</span>
                 <span>06 de Julho de 2024</span>
@@ -115,7 +331,7 @@
             </div>
         </div>
         
-        <div style="position: relative; overflow: hidden; background: #f7fafc; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+        <div class="calculator-container">
             
             <div class="calculadora">
                 <input type="text" id="display" disabled>
