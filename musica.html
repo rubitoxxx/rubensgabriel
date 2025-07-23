@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor YouTube para MP3</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -214,9 +213,13 @@
 
         /* Media queries para responsividade */
         @media (max-width: 768px) {
+            body {
+                padding: 1rem; /* Adiciona um pouco de padding ao corpo em telas pequenas */
+            }
             .app-container {
                 grid-template-columns: 1fr; /* Uma coluna em telas menores */
                 min-height: auto;
+                border-radius: 10px; /* Borda um pouco menor para telas pequenas */
             }
             .presentation-section {
                 padding: 2rem 1.5rem;
@@ -236,6 +239,9 @@
             .app-section {
                 padding: 1.5rem;
             }
+            .tag-audio {
+                margin: 0 auto 1.5rem auto; /* Centraliza a tag de áudio */
+            }
         }
     </style>
 </head>
@@ -244,7 +250,6 @@
 <section class="min-h-screen flex items-center justify-center p-4">
     <div class="app-container">
 
-        <!-- Seção de Apresentação (Esquerda) -->
         <div class="presentation-section">
             <span class="tag-audio">
                 🐍 Python
@@ -256,7 +261,7 @@
 
             <p class="presentation-description">
                 Uma ferramenta simples e eficiente para extrair o áudio de seus vídeos favoritos do YouTube e salvá-los como arquivos MP3. Experimente agora!
-            vou disponibilizar o download .salva a pasta no disco "c:" e depois abra o baixarmusica.exe </p>
+                vou disponibilizar o download .salva a pasta no disco "c:" e depois abra o baixarmusica.exe </p>
 
             <div class="info-bar">
                 <div class="info-item">
@@ -272,7 +277,6 @@
             </div>
         </div>
 
-        <!-- Seção do Aplicativo (Direita) -->
         <div class="app-section">
             <h2 class="text-2xl font-bold mb-6 text-gray-800">Conversor YouTube para MP3</h2>
 
