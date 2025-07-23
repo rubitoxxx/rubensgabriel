@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor YouTube para MP3</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos globais para o corpo, usando a fonte Inter e um fundo gradiente */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Gradiente de fundo inspirado na Hero Section */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Estilos para o container principal do aplicativo */
+        .app-container {
+            max-width: 1200px;
+            width: 100%;
+            /* Fundo com imagem para o container principal */
+            /* Usando um placeholder de imagem com tema Naruto, pois arquivos locais não são acessíveis diretamente em navegadores */
+            background-image: url('https://w0.peakpx.com/wallpaper/160/222/HD-wallpaper-music-of-my-soul-headphones-naruto-anime-music.jpg');
+            background-size: cover; /* Garante que a imagem cubra todo o container */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Duas colunas */
+            gap: 0;
+            min-height: 600px;
+        }
+
+        /* Estilos para a seção de apresentação (coluna esquerda) */
+        .presentation-section {
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: rgba(247, 250, 252, 0.9); /* Fundo semi-transparente para a apresentação */
+        }
+
+        /* Estilos para o rótulo "Áudio" */
+        .tag-audio {
+            display: inline-block;
+            background: #FFD43B; /* Cor amarela para o destaque */
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Estilos para o título principal da apresentação */
+        .presentation-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        /* Estilos para o parágrafo de descrição da apresentação */
+        .presentation-description {
+            font-size: 1.25rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Estilos para as informações do autor/data */
+        .info-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            color: #a0aec0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-initials {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .author-name {
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        /* Estilos para a seção do aplicativo (coluna direita) */
+        .app-section {
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente para o aplicativo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            flex-direction: column; /* Para empilhar os elementos do formulário */
+        }
+
+        /* Estilos para os campos de entrada */
+        .input-field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #cbd5e0; /* Borda mais clara */
+            background-color: #f7fafc; /* Fundo claro para os inputs */
+            color: #2d3748; /* Texto escuro nos inputs */
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus {
+            border-color: #667eea;
+        }
+
+        /* Estilos para os botões */
+        .btn {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.2s;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para os botões */
+        }
+        .btn-primary {
+            background-color: #667eea;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #5a67d8;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #48bb78;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #38a169;
+            transform: translateY(-2px);
+        }
+
+        /* Estilos para a caixa de mensagens */
+        .message-box {
+            background-color: #e2e8f0; /* Fundo claro para a caixa de mensagem */
+            color: #2d3748; /* Texto escuro */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            text-align: left;
+            border: 1px solid #cbd5e0;
+            display: none; /* Escondido por padrão */
+            width: 100%; /* Ocupa a largura total da coluna */
+        }
+        .message-box.show {
+            display: block;
+        }
+        .message-box.error {
+            background-color: #fed7d7; /* Fundo vermelho claro para erro */
+            color: #c53030; /* Texto vermelho escuro para erro */
+            border-color: #fc8181;
+        }
+        .message-box.success {
+            background-color: #c6f6d5; /* Fundo verde claro para sucesso */
+            color: #2f855a; /* Texto verde escuro para sucesso */
+            border-color: #68d391;
+        }
+
+        /* Estilos para rótulos de input */
+        .input-label {
+            display: block;
+            text-align: left;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #2d3748; /* Cor escura para os rótulos */
+            width: 100%;
+        }
+
+        /* Media queries para responsividade */
+        @media (max-width: 768px) {
+            .app-container {
+                grid-template-columns: 1fr; /* Uma coluna em telas menores */
+                min-height: auto;
+            }
+            .presentation-section {
+                padding: 2rem 1.5rem;
+                text-align: center;
+            }
+            .presentation-title {
+                font-size: 2.25rem;
+            }
+            .presentation-description {
+                font-size: 1rem;
+            }
+            .info-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .app-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="min-h-screen flex items-center justify-center p-4">
+    <div class="app-container">
+
+        <!-- Seção de Apresentação (Esquerda) -->
+        <div class="presentation-section">
+            <span class="tag-audio">
+                🐍 Python
+            </span>
+
+            <h1 class="presentation-title">
+                Converta Seus Vídeos do YouTube para MP3 Facilmente
+            </h1>
+
+            <p class="presentation-description">
+                Uma ferramenta simples e eficiente para extrair o áudio de seus vídeos favoritos do YouTube e salvá-los como arquivos MP3. Experimente agora!
+            vou disponibilizar o download .salva a pasta no disco "c:" e depois abra o baixarmusica.exe </p>
+
+            <div class="info-bar">
+                <div class="info-item">
+                    <div class="author-initials">
+                        GM
+                    </div>
+                    <span class="author-name">Rubens Gabriel</span>
+                </div>
+                <span>•</span>
+                <span>23 de Julho de 2025</span>
+                <span>•</span>
+                <span>Simulado</span>
+            </div>
+        </div>
+
+        <!-- Seção do Aplicativo (Direita) -->
+        <div class="app-section">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Conversor YouTube para MP3</h2>
+
+            <label for="urlVideo" class="input-label">Digite a URL do vídeo do YouTube:</label>
+            <input type="text" id="urlVideo" class="input-field" placeholder="Ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+
+            <label for="diretorioSaida" class="input-label mt-4">Escolha o diretório de saída (simulado):</label>
+            <input type="text" id="diretorioSaida" class="input-field" value="Caminho/Simulado/MP3s" readonly>
+            <button id="btnEscolherDiretorio" class="btn btn-primary">Escolher Diretório</button>
+
+            <button id="btnIniciarDownload" class="btn btn-secondary mt-6">Iniciar Download (Simulado)</button>
+
+            <div id="messageBox" class="message-box"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Função para exibir mensagens na caixa de mensagens personalizada
+    function showMessage(message, type = 'info') {
+        const messageBox = document.getElementById('messageBox');
+        messageBox.textContent = message;
+        // Remove todas as classes de tipo antes de adicionar a nova
+        messageBox.classList.remove('error', 'success', 'info');
+        messageBox.classList.add('show'); // Garante que a caixa de mensagem esteja visível
+
+        if (type === 'error') {
+            messageBox.classList.add('error');
+        } else if (type === 'success') {
+            messageBox.classList.add('success');
+        } else {
+            messageBox.classList.add('info'); // Padrão para info
+        }
+
+        // Esconde a mensagem após 5 segundos
+        setTimeout(() => {
+            messageBox.classList.remove('show');
+            messageBox.classList.remove('error', 'success', 'info'); // Limpa as classes de tipo
+        }, 5000);
+    }
+
+    // Event listener para o botão "Escolher Diretório"
+    document.getElementById('btnEscolherDiretorio').addEventListener('click', () => {
+        // No ambiente do navegador, não é possível abrir um diálogo de seleção de diretório real.
+        // Esta é uma simulação para demonstrar a interação.
+        const simulatedPath = prompt("Por favor, digite um caminho de diretório simulado (ex: C:/Downloads/MP3s):");
+        if (simulatedPath) {
+            document.getElementById('diretorioSaida').value = simulatedPath;
+            showMessage("Diretório de saída simulado definido: " + simulatedPath, 'info');
+        } else {
+            showMessage("Nenhum diretório simulado foi selecionado.", 'info');
+        }
+    });
+
+    // Event listener para o botão "Iniciar Download"
+    document.getElementById('btnIniciarDownload').addEventListener('click', () => {
+        const urlVideo = document.getElementById('urlVideo').value;
+        const diretorioSaida = document.getElementById('diretorioSaida').value;
+
+        if (!urlVideo) {
+            showMessage("Por favor, insira uma URL válida do YouTube.", 'error');
+            return;
+        }
+
+        if (!diretorioSaida || diretorioSaida === "Caminho/Simulado/MP3s") {
+            showMessage("Por favor, escolha um diretório de saída simulado.", 'error');
+            return;
+        }
+
+        // Simulação do processo de download e conversão
+        showMessage("Iniciando download e conversão (simulado)...", 'info');
+
+        // Em uma aplicação real, aqui você faria uma requisição AJAX (fetch) para o seu servidor (backend)
+        // que seria responsável por executar a lógica Python (yt-dlp, ffmpeg) e retornar o resultado.
+        // Exemplo de como seria a chamada fetch (comentado):
+        /*
+        fetch('/api/convert', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: urlVideo, outputPath: diretorioSaida }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showMessage(data.message, 'success');
+            } else {
+                showMessage(data.message, 'error');
+            }
+        })
+        .catch(error => {
+            showMessage('Ocorreu um erro na comunicação com o servidor.', 'error');
+            console.error('Erro:', error);
+        });
+        */
+
+        // Simulação de sucesso após um pequeno atraso para feedback visual
+        setTimeout(() => {
+            showMessage(`Simulação concluída: MP3 de "${urlVideo}" salvo em "${diretorioSaida}".`, 'success');
+        }, 2000); // Simula um atraso de 2 segundos
+    });
+</script>
+
+</body>
+</html>
