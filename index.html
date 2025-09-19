@@ -52,26 +52,29 @@
     </nav>
 
     <header id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white pt-16">
-        <div class="text-center px-6">
-            <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white/20 flex items-center justify-center text-6xl">
-                👨‍💻
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in">Rubens Gabriel</h1>
-            <p class="text-xl md:text-2xl opacity-90 fade-in">Analista e Desenvolvedor de Sistemas</p>
-            <p class="text-xl md:text-2xl mt-2 mb-10 opacity-90 fade-in">em formação</p>
-            <div class="space-x-4 fade-in">
-                <button onclick="scrollToSection('projects')" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                    Ver Meus Trabalhos
-                </button>
-                 <button onclick="curriculo.html" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                    Curriculo
-                </button>
-                <button onclick="scrollToSection('contact')" class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
-                    Entrar em Contato
-                </button>
-            </div>
+    <div class="text-center px-6">
+        <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white/20 flex items-center justify-center text-6xl">
+            👨‍💻
         </div>
-    </header>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in">Rubens Gabriel</h1>
+        <p class="text-xl md:text-2xl opacity-90 fade-in">Analista e Desenvolvedor de Sistemas</p>
+        <p class="text-xl md:text-2xl mt-2 mb-10 opacity-90 fade-in">em formação</p>
+        <div class="space-x-4 fade-in">
+            <button onclick="scrollToSection('projects')" aria-label="Ver meus projetos"
+                class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                Ver Meus Trabalhos
+            </button>
+            <button onclick="window.location.href='curriculo.html'"
+                class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                Currículo
+            </button>
+            <button onclick="scrollToSection('contact')" aria-label="Entrar em contato"
+                class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                Entrar em Contato
+            </button>
+        </div>
+    </div>
+</header>
 
     <section id="about" class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-6">
@@ -386,3 +389,4 @@
     </script>
 </body>
 </html>
+
