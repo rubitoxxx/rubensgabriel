@@ -49,7 +49,7 @@ mobileMenuButton.addEventListener('click', function() {
 // Form submission alert
 document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Sua mensagem não foi enviada.Entre em contato comigo por email');
+    alert('Sua mensagem foi enviada.Logo entro em contato com você');
 });
 
 // Initial animations on load for the hero section
