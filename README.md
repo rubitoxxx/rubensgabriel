@@ -1,11 +1,6 @@
 # 🧑‍💻 Portfólio Interativo — Rubens Gabriel
 
-[![Badge - HTML](https://img.shields.io/badge/HTML5-orange?style=for-the-badge&logo=html5)]()
-[![Badge - CSS](https://img.shields.io/badge/CSS3-blue?style=for-the-badge&logo=css3)]()
-[![Badge - JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge&logo=javascript)]()
-[![Badge - Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
-[![Badge - Java](https://img.shields.io/badge/Java-red?style=for-the-badge&logo=java)]()
-[![Badge - Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)]()
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,vscode)](https://skillicons.dev)
 
 > Repositório com projetos e páginas demonstrativas para fins educacionais e práticos. Desenvolvido por **Rubens Gabriel**, este portfólio visa mostrar habilidades em programação, web design e lógica.
 
