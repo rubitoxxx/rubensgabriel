@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Açaí do Paraizinho — Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap');
+
+  :root{
+    --roxo-escuro:#3a1256;
+    --roxo:#6b2a86;
+    --rosa:#ff5da2;
+    --amarelo:#ffcb3d;
+    --creme:#fff6ea;
+    --verde:#3ecf8e;
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,93,162,0.35), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(62,207,142,0.30), transparent 45%),
+      linear-gradient(160deg, var(--roxo-escuro), var(--roxo) 60%, #4a1a68);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:2.5rem 1.25rem;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* Bolinhas decorativas tipo "frutinhas" flutuando */
+  .fruta{
+    position:absolute;
+    border-radius:50%;
+    opacity:.55;
+    filter:blur(0.5px);
+    animation:flutuar 7s ease-in-out infinite;
+  }
+  @keyframes flutuar{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-18px) rotate(8deg); }
+  }
+
+  .page{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.75rem;
+    z-index:1;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    color:var(--creme);
+    padding:.45rem 1rem;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.8rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    backdrop-filter:blur(6px);
+  }
+
+  h1{
+    font-family:'Baloo 2', sans-serif;
+    color:var(--creme);
+    font-size:2.4rem;
+    text-align:center;
+    margin:0;
+    line-height:1.05;
+    text-shadow:0 6px 24px rgba(0,0,0,0.25);
+  }
+  h1 span{
+    color:var(--amarelo);
+    display:block;
+    font-size:1.1rem;
+    font-weight:700;
+    margin-top:.4rem;
+    letter-spacing:.02em;
+    text-transform:none;
+  }
+
+  /* ---- Moldura do celular ---- */
+  .phone{
+    position:relative;
+    width:330px;
+    height:680px;
+    background:linear-gradient(155deg,#1c1024,#2c1638);
+    border-radius:54px;
+    padding:14px;
+    box-shadow:
+      0 30px 60px rgba(20,0,35,0.55),
+      0 0 0 2px rgba(255,255,255,0.06) inset,
+      0 0 40px rgba(255,93,162,0.25);
+  }
+
+  .phone::before{ /* botão lateral direito */
+    content:"";
+    position:absolute;
+    right:-3px;
+    top:150px;
+    width:3px;
+    height:70px;
+    background:#120a18;
+    border-radius:2px 0 0 2px;
+  }
+  .phone::after{ /* botões volume esquerda */
+    content:"";
+    position:absolute;
+    left:-3px;
+    top:120px;
+    width:3px;
+    height:100px;
+    background:#120a18;
+    border-radius:0 2px 2px 0;
+    box-shadow: 0 130px 0 -6px #120a18, 0 130px 0 -6px #120a18;
+  }
+
+  .screen{
+    position:relative;
+    width:100%;
+    height:100%;
+    background:#0e0512;
+    border-radius:38px;
+    overflow:hidden;
+    box-shadow:0 0 0 2px rgba(0,0,0,0.4) inset;
+  }
+
+  .notch{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:150px;
+    height:26px;
+    background:#0e0512;
+    border-bottom-left-radius:16px;
+    border-bottom-right-radius:16px;
+    z-index:5;
+  }
+
+  .status-bar{
+    position:absolute;
+    top:0; left:0; right:0;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+    z-index:4;
+    pointer-events:none;
+  }
+
+  iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    border:0;
+    background:#fff;
+  }
+
+  .home-indicator{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:5px;
+    background:rgba(255,255,255,0.65);
+    border-radius:999px;
+    z-index:5;
+  }
+
+  .link-row{
+    display:flex;
+    gap:.75rem;
+    align-items:center;
+  }
+
+  .abrir-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:var(--amarelo);
+    color:#3a1256;
+    font-weight:800;
+    font-family:'Baloo 2', sans-serif;
+    text-decoration:none;
+    padding:.75rem 1.4rem;
+    border-radius:999px;
+    box-shadow:0 8px 20px rgba(255,203,61,0.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+    font-size:.95rem;
+  }
+  .abrir-link:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px rgba(255,203,61,0.45);
+  }
+
+  footer{
+    color:rgba(255,246,234,0.6);
+    font-size:.8rem;
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+
+  <div class="fruta" style="width:26px;height:26px;background:var(--amarelo);top:12%;left:10%;"></div>
+  <div class="fruta" style="width:16px;height:16px;background:var(--rosa);top:75%;left:8%;animation-delay:1s;"></div>
+  <div class="fruta" style="width:20px;height:20px;background:var(--verde);top:20%;right:10%;animation-delay:2s;"></div>
+  <div class="fruta" style="width:14px;height:14px;background:var(--amarelo);bottom:12%;right:14%;animation-delay:.5s;"></div>
+
+  <div class="page">
+    <span class="eyebrow">🍇 Preview mobile</span>
+    <h1>Açaí do Paraizinho
+      <span>Confira como fica no celular</span>
+    </h1>
+
+    <div class="phone">
+      <div class="screen">
+        <div class="notch"></div>
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>●●●●●</span>
+        </div>
+        <iframe
+          src="https://acaidoparazinho.ai.studio/"
+          title="Açaí do Paraizinho"
+          loading="lazy"
+          allow="clipboard-write"
+        ></iframe>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <a class="abrir-link" href="https://acaidoparazinho.ai.studio/" target="_blank" rel="noopener">
+        Abrir site completo ↗
+      </a>
+    </div>
+
+    <footer>acaidoparazinho.ai.studio</footer>
+  </div>
+
+</body>
+</html>

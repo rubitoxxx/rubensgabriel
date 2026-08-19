@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mago dos Cortes — Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap');
+
+  :root{
+    --preto:#0b0b0d;
+    --preto2:#161418;
+    --dourado:#d9a441;
+    --dourado-claro:#f1cd7a;
+    --vinho:#3a0f14;
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(217,164,65,0.14), transparent 45%),
+      radial-gradient(circle at 85% 85%, rgba(58,15,20,0.55), transparent 50%),
+      linear-gradient(160deg, #050506, var(--preto) 55%, #0d0a0a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:2.5rem 1.25rem;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* linhas douradas decorativas, tipo runas/faiscas */
+  .brilho{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:var(--dourado-claro);
+    border-radius:50%;
+    box-shadow:0 0 8px 2px rgba(241,205,122,0.8);
+    animation:cintilar 3.2s ease-in-out infinite;
+  }
+  @keyframes cintilar{
+    0%,100%{ opacity:.2; transform:scale(1); }
+    50%{ opacity:1; transform:scale(1.6); }
+  }
+
+  .page{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.75rem;
+    z-index:1;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:rgba(217,164,65,0.08);
+    border:1px solid rgba(217,164,65,0.4);
+    color:var(--dourado-claro);
+    padding:.45rem 1rem;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.75rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+
+  h1{
+    font-family:'Cinzel', serif;
+    color:var(--dourado-claro);
+    font-size:2.1rem;
+    text-align:center;
+    margin:0;
+    line-height:1.15;
+    text-shadow:0 0 24px rgba(217,164,65,0.35);
+  }
+  h1 span{
+    color:#c9c2b8;
+    display:block;
+    font-family:'Nunito', sans-serif;
+    font-size:1rem;
+    font-weight:600;
+    margin-top:.5rem;
+    letter-spacing:.02em;
+  }
+
+  /* ---- Moldura do celular ---- */
+  .phone{
+    position:relative;
+    width:330px;
+    height:680px;
+    background:linear-gradient(155deg,#1a1a1c,#0c0c0e);
+    border-radius:54px;
+    padding:14px;
+    box-shadow:
+      0 30px 60px rgba(0,0,0,0.7),
+      0 0 0 1px rgba(217,164,65,0.25) inset,
+      0 0 0 2px rgba(255,255,255,0.04) inset,
+      0 0 44px rgba(217,164,65,0.15);
+  }
+
+  .phone::before{
+    content:"";
+    position:absolute;
+    right:-3px;
+    top:150px;
+    width:3px;
+    height:70px;
+    background:#000;
+    border-radius:2px 0 0 2px;
+  }
+  .phone::after{
+    content:"";
+    position:absolute;
+    left:-3px;
+    top:120px;
+    width:3px;
+    height:100px;
+    background:#000;
+    border-radius:0 2px 2px 0;
+    box-shadow: 0 130px 0 -6px #000, 0 130px 0 -6px #000;
+  }
+
+  .screen{
+    position:relative;
+    width:100%;
+    height:100%;
+    background:#0e0e0e;
+    border-radius:38px;
+    overflow:hidden;
+    box-shadow:0 0 0 2px rgba(217,164,65,0.15) inset;
+  }
+
+  .notch{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:150px;
+    height:26px;
+    background:#0e0e0e;
+    border-bottom-left-radius:16px;
+    border-bottom-right-radius:16px;
+    z-index:5;
+  }
+
+  .status-bar{
+    position:absolute;
+    top:0; left:0; right:0;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+    z-index:4;
+    pointer-events:none;
+  }
+
+  iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    border:0;
+    background:#fff;
+  }
+
+  .home-indicator{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:5px;
+    background:rgba(241,205,122,0.55);
+    border-radius:999px;
+    z-index:5;
+  }
+
+  .abrir-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:linear-gradient(135deg, var(--dourado-claro), var(--dourado));
+    color:#221306;
+    font-weight:800;
+    font-family:'Cinzel', serif;
+    text-decoration:none;
+    padding:.75rem 1.5rem;
+    border-radius:999px;
+    box-shadow:0 10px 24px rgba(217,164,65,0.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+    font-size:.9rem;
+    letter-spacing:.03em;
+  }
+  .abrir-link:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(217,164,65,0.45);
+  }
+
+  footer{
+    color:rgba(201,194,184,0.5);
+    font-size:.78rem;
+    text-align:center;
+    letter-spacing:.02em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="brilho" style="top:14%;left:12%;"></div>
+  <div class="brilho" style="top:22%;right:14%;animation-delay:1s;"></div>
+  <div class="brilho" style="bottom:18%;left:16%;animation-delay:2s;"></div>
+  <div class="brilho" style="bottom:26%;right:10%;animation-delay:.6s;"></div>
+
+  <div class="page">
+    <span class="eyebrow">✂ Preview mobile</span>
+    <h1>Mago dos Cortes
+      <span>Agendamento — veja como fica no celular</span>
+    </h1>
+
+    <div class="phone">
+      <div class="screen">
+        <div class="notch"></div>
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>●●●●●</span>
+        </div>
+        <iframe
+          src="https://agendamento-mago-dos-cortes.ai.studio/"
+          title="Agendamento Mago dos Cortes"
+          loading="lazy"
+          allow="clipboard-write"
+        ></iframe>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <a class="abrir-link" href="https://agendamento-mago-dos-cortes.ai.studio/" target="_blank" rel="noopener">
+      Abrir site completo ↗
+    </a>
+
+    <footer>agendamento-mago-dos-cortes.ai.studio</footer>
+  </div>
+
+</body>
+</html>
