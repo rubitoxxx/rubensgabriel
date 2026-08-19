@@ -194,6 +194,58 @@
             padding: 2rem;
         }
 
+        /* Bloco de código Python */
+        .python-code-section {
+            grid-column: 1 / -1;
+            padding: 0 3rem 3rem;
+        }
+
+        .python-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #2d3748;
+            color: #48bb78;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: all 0.2s ease;
+        }
+
+        .python-toggle-btn:hover {
+            background: #1a202c;
+            transform: translateY(-2px);
+        }
+
+        .python-code-wrapper {
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .python-code-wrapper.aberto {
+            display: block;
+        }
+
+        .python-code-wrapper pre {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .python-code-wrapper code {
+            font-family: inherit;
+        }
+
         /* --- Media Queries para Responsividade --- */
 
         /* Para telas menores que 768px (celulares, tablets pequenos) */
@@ -361,9 +413,87 @@
             </div>
 
         </div>
+
+        <div class="python-code-section">
+            <button class="python-toggle-btn" onclick="alternarCodigoPython()">
+                🐍 <span id="python-toggle-label">Ver código em Python</span>
+            </button>
+            <div class="python-code-wrapper" id="python-code-wrapper">
+                <pre><code>def adicionar(display, valor):
+    """Adiciona um caractere ao display, evitando erros comuns."""
+    operadores = ['/', '*', '-', '+']
+
+    # Evita múltiplos operadores em sequência
+    if display and valor in operadores and display[-1] in operadores:
+        return display
+
+    # Evita adicionar um segundo ponto no número atual
+    if valor == '.':
+        ultimo_operador = -1
+        for i, c in enumerate(display):
+            if c in operadores:
+                ultimo_operador = i
+        if '.' in display[ultimo_operador + 1:]:
+            return display
+
+    return display + valor
+
+
+def calcular(display):
+    """Avalia a expressão do display e retorna o resultado."""
+    try:
+        resultado = eval(display)
+        if isinstance(resultado, float):
+            resultado = round(resultado, 4)
+        return resultado
+    except Exception:
+        return "Erro"
+
+
+def limpar():
+    """Limpa o display."""
+    return ""
+
+
+def main():
+    display = ""
+    print("Calculadora em Python (digite 'q' para sair)")
+
+    while True:
+        print(f"\nDisplay: {display}")
+        entrada = input("Número/operador, '=' calcular, 'c' limpar, 'q' sair: ")
+
+        if entrada == 'q':
+            break
+        elif entrada == 'c':
+            display = limpar()
+        elif entrada == '=':
+            resultado = calcular(display)
+            print(f"Resultado: {resultado}")
+            display = str(resultado)
+        else:
+            display = adicionar(display, entrada)
+
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+            </div>
+        </div>
     </div>
 </section>
 
+
+<script>
+    function alternarCodigoPython() {
+        const wrapper = document.getElementById('python-code-wrapper');
+        const label = document.getElementById('python-toggle-label');
+        wrapper.classList.toggle('aberto');
+        label.textContent = wrapper.classList.contains('aberto')
+            ? 'Ocultar código em Python'
+            : 'Ver código em Python';
+    }
+</script>
 
 <script>
     const display = document.getElementById('display');
