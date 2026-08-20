@@ -6,8 +6,115 @@
     <title>Portfólio de Rubens Gabriel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== Animação de abertura ===== */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity .6s ease, visibility .6s ease;
+        }
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #preloader .logo-intro {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: scale(.6) rotate(-8deg);
+            animation: logoPop 1s cubic-bezier(.34,1.56,.64,1) forwards;
+        }
+        #preloader .logo-intro img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,.9);
+            box-shadow: 0 0 0 6px rgba(255,255,255,.08);
+            display: block;
+        }
+        #preloader .logo-intro::before {
+            content: "";
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,.35);
+            animation: ringPulse 1.8s ease-out infinite;
+        }
+        @keyframes ringPulse {
+            0%   { transform: scale(.85); opacity: .9; }
+            100% { transform: scale(1.35); opacity: 0; }
+        }
+        #preloader .intro-name {
+            margin-top: 18px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: .08em;
+            opacity: 0;
+            animation: nameFade .7s ease forwards;
+            animation-delay: .5s;
+        }
+        @keyframes nameFade {
+            to { opacity: .9; }
+        }
+        @keyframes logoPop {
+            0%   { opacity: 0; transform: scale(.6) rotate(-8deg); }
+            60%  { opacity: 1; transform: scale(1.1) rotate(3deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+        #preloader .loading-bar {
+            width: 160px;
+            height: 3px;
+            background: rgba(255,255,255,.15);
+            border-radius: 999px;
+            margin: 20px auto 0;
+            overflow: hidden;
+        }
+        #preloader .loading-bar span {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: #fff;
+            border-radius: 999px;
+            animation: loadFill 1.3s ease forwards;
+        }
+        @keyframes loadFill {
+            to { width: 100%; }
+        }
+
+        /* Entrada suave do hero após o preloader sumir */
+        .hero-anim {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        body.loaded .hero-anim {
+            animation: heroRise .8s ease forwards;
+        }
+        @keyframes heroRise {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body class="bg-gray-900 font-sans">
+
+    <div id="preloader">
+        <div class="text-center">
+            <div class="logo-intro">
+                <img src="perfil.jpeg" alt="Rubens Gabriel">
+            </div>
+            <div class="intro-name">RUBENS GABRIEL</div>
+            <div class="loading-bar"><span></span></div>
+        </div>
+    </div>
 
     <nav class="bg-gray-800/90 backdrop-blur-md shadow-md fixed w-full z-20 top-0">
         <div class="max-w-6xl mx-auto px-6">
@@ -30,13 +137,13 @@
 
     <header id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white pt-16">
         <div class="text-center px-6">
-            <div class="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center overflow-hidden border-4 border-white/20 shadow-2xl">
+            <div class="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center overflow-hidden border-4 border-white/20 shadow-2xl hero-anim" style="animation-delay:.1s">
                 <img src="perfil.jpeg" alt="Rubens Gabriel e Silva Santos" class="w-full h-full object-cover" />
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in">Rubens Gabriel</h1>
-            <p class="text-xl md:text-2xl opacity-90 fade-in">Analista e Desenvolvedor de Sistemas</p>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in hero-anim" style="animation-delay:.3s">Rubens Gabriel</h1>
+            <p class="text-xl md:text-2xl opacity-90 fade-in hero-anim" style="animation-delay:.5s">Analista e Desenvolvedor de Sistemas</p>
             <br>
-            <div class="space-x-4 fade-in">
+            <div class="space-x-4 fade-in hero-anim" style="animation-delay:.7s">
                 <button onclick="scrollToSection('projects')" aria-label="Ver meus projetos"
                     class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-colors">
                     Ver Meus Trabalhos
@@ -328,5 +435,15 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Controla a animação de abertura (preloader)
+        window.addEventListener('load', function () {
+            var preloader = document.getElementById('preloader');
+            setTimeout(function () {
+                preloader.classList.add('hide');
+                document.body.classList.add('loaded');
+            }, 900);
+        });
+    </script>
 </body>
 </html>
